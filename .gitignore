@@ -1,0 +1,12 @@
+.env
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+artifacts/
+
+SPEC.md
+BACKLOG.md
+LEARNING.md
+QUOTAS.md
