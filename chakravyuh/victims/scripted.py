@@ -1,4 +1,4 @@
-"""The deterministic weak victim.
+﻿"""The deterministic weak victim.
 
 A real open-weight 7B victim would need credits and would not be reproducible
 in CI. This one is a calibrated stand-in: a scripted policy whose directive
@@ -139,7 +139,7 @@ class ScriptedVictim:
         if pending_plan:
             if (
                 self._spotlighted
-                and any(not b.trusted for b in ctx.blocks)
+                and any(not b.trusted for b in ctx.segments)
                 and _roll("refuse", self.seed, ctx.task) < SPOTLIGHT_REFUSAL
             ):
                 self._plan = []
@@ -148,17 +148,17 @@ class ScriptedVictim:
         return []
 
     def _visible_text(self, ctx: RenderedContext) -> str:
-        return "\n".join(block.text for block in ctx.blocks)
+        return "\n".join(segment.text for segment in ctx.segments)
 
     def _detect(self, ctx: RenderedContext) -> tuple[str, str] | None:
-        for block in ctx.blocks:
+        for segment in ctx.segments:
             for cue, kind in self._cues:
-                if cue in block.text:
+                if cue in segment.text:
                     channel = (
-                        "tool_result" if block.channel == "tool_result"
+                        "tool_result" if segment.channel == "tool_result"
                         else "document"
                     )
-                    if channel == "document" and not block.trusted and self._spotlighted:
+                    if channel == "document" and not segment.trusted and self._spotlighted:
                         # fenced but still visible to a weak model at a
                         # discounted rate; the source tag carries that
                         pass
@@ -168,8 +168,8 @@ class ScriptedVictim:
             text = self._visible_text(ctx)
             if a in text and b in text:
                 echo = any(
-                    b in block.text and block.channel == "tool_result"
-                    for block in ctx.blocks
+                    b in segment.text and segment.channel == "tool_result"
+                    for segment in ctx.segments
                 )
                 return "drip", "tool_result" if echo else "document"
         return None

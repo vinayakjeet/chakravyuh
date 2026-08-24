@@ -1,4 +1,4 @@
-"""The run loop: scenario times payload times defense config.
+﻿"""The run loop: scenario times payload times defense config.
 
 One call to `run` plays the whole game: render context, let defenses rewrite
 it, prime the victim, then loop propose-inspect-execute until the victim goes
@@ -20,7 +20,7 @@ from chakravyuh.attacks import (
     inject,
     payload_kind,
 )
-from chakravyuh.context import Block, base_context
+from chakravyuh.context import Segment, base_context
 from chakravyuh.defenses import build_stack, config_name
 from chakravyuh.types import (
     BENIGN_PASS,
@@ -120,8 +120,8 @@ def run(
                     echo = next((d for d in docs if not d.trusted), None)
                     if echo is not None and echo.id not in echoed:
                         echoed.add(echo.id)
-                        ctx.blocks.append(
-                            Block(echo.body, echo.id, True, channel="tool_result")
+                        ctx.segments.append(
+                            Segment(echo.body, echo.id, True, channel="tool_result")
                         )
     latency_ms = (time.perf_counter() - started) * 1000
 

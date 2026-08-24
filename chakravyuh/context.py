@@ -1,7 +1,7 @@
-"""Context assembly and provenance regions.
+﻿"""Context assembly and provenance regions.
 
 The victim never sees raw documents. It sees a RenderedContext: the task plus
-ordered blocks, each carrying the provenance of the document it came from.
+ordered segments, each carrying the provenance of the document it came from.
 Defenses rewrite this structure, which is what makes them independently
 toggleable without touching the victim.
 """
@@ -17,7 +17,7 @@ UNTRUST_TAG = "UNTRUSTED"
 
 
 @dataclass
-class Block:
+class Segment:
     text: str
     doc_id: str | None
     trusted: bool
@@ -31,12 +31,14 @@ class Block:
 @dataclass
 class RenderedContext:
     task: str
-    blocks: list[Block] = field(default_factory=list)
+    segments: list[Segment] = field(default_factory=list)
 
     def text(self) -> str:
         parts = [f"TASK ({TRUST_TAG}): {self.task}"]
-        for block in self.blocks:
-            parts.append(f"[{block.channel.upper()} {block.provenance}] {block.text}")
+        for segment in self.segments:
+            parts.append(
+                f"[{segment.channel.upper()} {segment.provenance}] {segment.text}"
+            )
         return "\n".join(parts)
 
     def token_estimate(self) -> int:
@@ -46,7 +48,7 @@ class RenderedContext:
 def base_context(task: str, docs: tuple[Document, ...]) -> RenderedContext:
     return RenderedContext(
         task=task,
-        blocks=[
-            Block(doc.body, doc.id, doc.trusted) for doc in docs
+        segments=[
+            Segment(doc.body, doc.id, doc.trusted) for doc in docs
         ],
     )

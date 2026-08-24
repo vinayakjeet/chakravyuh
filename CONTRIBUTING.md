@@ -36,9 +36,10 @@ comprehensive, robust, seamless, powerful, production-grade, blazing fast;
 "leverage" as a verb; the "it's not just X, it's Y" construction; bold lead-ins
 on every bullet in a list.
 
-Also never: "solves", "blocks", or "prevents" for security claims. Write
-"reduced ASR from A to B under threat model T". `scripts/check_conventions.py`
-flags these for review, and CI runs it.
+Also never: absolute security verbs of the solve/block/prevent family, in any
+inflection. State what was measured instead: "reduced ASR from A to B under
+threat model T". `scripts/check_conventions.py` flags these words for review,
+and CI runs it.
 
 Do: write plainly and specifically. Name real numbers, real file paths, real
 failures. Vary sentence length. Let the "What broke" section be genuinely

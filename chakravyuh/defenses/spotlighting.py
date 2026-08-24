@@ -1,8 +1,8 @@
 ﻿"""Untrusted-content tagging and spotlighting.
 
-Each untrusted block is fenced with per-document nonces, and a policy block
+Each untrusted segment is fenced with per-document nonces, and a policy block
 tells the victim that fenced content is data, never instruction. The scripted
-victim implements tagging as provenance blindness on the document channel;
+victim implements tagging as provenance discounting on the document channel;
 what still reaches it comes back through tool results.
 """
 
@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import hashlib
 
-from chakravyuh.context import Block, RenderedContext
+from chakravyuh.context import RenderedContext, Segment
 from chakravyuh.defenses.base import BaseDefense
 from chakravyuh.types import Scenario
 
@@ -29,14 +29,14 @@ class Spotlighting(BaseDefense):
     name = "spotlighting"
 
     def render(self, ctx: RenderedContext, scenario: Scenario) -> RenderedContext:
-        out: list[Block] = [Block(POLICY_TEXT, None, True, channel="policy")]
-        for block in ctx.blocks:
-            if block.trusted or block.doc_id is None:
-                out.append(block)
+        out: list[Segment] = [Segment(POLICY_TEXT, None, True, channel="policy")]
+        for segment in ctx.segments:
+            if segment.trusted or segment.doc_id is None:
+                out.append(segment)
                 continue
-            nonce = _nonce(scenario.id, block.doc_id)
+            nonce = _nonce(scenario.id, segment.doc_id)
             fenced = (
-                f"[BEGIN UNTRUSTED {nonce}]\n{block.text}\n[END UNTRUSTED {nonce}]"
+                f"[BEGIN UNTRUSTED {nonce}]\n{segment.text}\n[END UNTRUSTED {nonce}]"
             )
-            out.append(Block(fenced, block.doc_id, False, block.channel))
-        return RenderedContext(task=ctx.task, blocks=out)
+            out.append(Segment(fenced, segment.doc_id, False, segment.channel))
+        return RenderedContext(task=ctx.task, segments=out)

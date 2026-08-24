@@ -33,7 +33,7 @@ def test_adi_smuggles_a_directive_between_forged_field_delimiters():
     assert ADI_CUE in primary.body
     assert "<<<FIELD_END>>>" in primary.body
     assert "<<<FIELD_BEGIN>>>" in primary.body
-    # the smuggled block sits inside what a form parser reads as one value
+    # the smuggled directive sits inside what a form parser reads as one value
     value_line = [ln for ln in primary.body.splitlines() if ln.startswith("value:")]
     assert value_line
 

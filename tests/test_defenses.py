@@ -1,4 +1,4 @@
-from chakravyuh.context import base_context
+﻿from chakravyuh.context import base_context
 from chakravyuh.corpus import ATTACKER_DOMAIN, all_scenarios
 from chakravyuh.defenses.allowlist import Allowlist
 from chakravyuh.defenses.approval import ApprovalGate
@@ -26,11 +26,11 @@ def test_spotlighting_fences_untrusted_and_leaves_trusted_alone():
     scenario = _attacked()
     ctx = base_context(scenario.task, scenario.docs)
     out = Spotlighting().render(ctx, scenario)
-    fenced = [b for b in out.blocks if "BEGIN UNTRUSTED" in b.text]
-    plain_trusted = [b for b in out.blocks if b.trusted and b.channel == "document"]
+    fenced = [b for b in out.segments if "BEGIN UNTRUSTED" in b.text]
+    plain_trusted = [b for b in out.segments if b.trusted and b.channel == "document"]
     assert fenced and plain_trusted
     assert all(not b.trusted for b in fenced)
-    assert any(b.channel == "policy" for b in out.blocks)
+    assert any(b.channel == "policy" for b in out.segments)
 
 
 def test_allowlist_denies_tools_outside_least_privilege():

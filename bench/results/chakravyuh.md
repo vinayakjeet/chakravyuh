@@ -94,37 +94,37 @@
 | Config | Mean prompt tokens | Extra vs none | Multiplier | inspect us/call |
 |---|---|---|---|---|
 | none | 62.6 | 0.0 | 1.0 | 0.00 |
-| allowlist | 62.6 | 0.0 | 1.0 | 0.97 |
-| exfil_filter | 62.6 | 0.0 | 1.0 | 1.36 |
+| allowlist | 62.6 | 0.0 | 1.0 | 0.88 |
+| exfil_filter | 62.6 | 0.0 | 1.0 | 1.19 |
 | spotlighting | 97.0 | 34.4 | 1.549 | 0.12 |
-| approval_gate | 62.6 | 0.0 | 1.0 | 1.66 |
-| secondary_check | 62.6 | 0.0 | 1.0 | 5.71 |
-| allowlist+exfil_filter | 62.6 | 0.0 | 1.0 | 2.33 |
-| spotlighting+allowlist | 97.0 | 34.4 | 1.549 | 1.09 |
-| allowlist+approval_gate | 62.6 | 0.0 | 1.0 | 2.63 |
-| allowlist+secondary_check | 62.6 | 0.0 | 1.0 | 6.68 |
-| spotlighting+exfil_filter | 97.0 | 34.4 | 1.549 | 1.48 |
-| exfil_filter+approval_gate | 62.6 | 0.0 | 1.0 | 3.02 |
-| spotlighting+approval_gate | 97.0 | 34.4 | 1.549 | 1.78 |
-| exfil_filter+secondary_check | 62.6 | 0.0 | 1.0 | 7.07 |
-| spotlighting+secondary_check | 97.0 | 34.4 | 1.549 | 5.83 |
-| approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 7.37 |
-| spotlighting+allowlist+exfil_filter | 97.0 | 34.4 | 1.549 | 2.45 |
-| allowlist+exfil_filter+approval_gate | 62.6 | 0.0 | 1.0 | 3.99 |
-| spotlighting+allowlist+approval_gate | 97.0 | 34.4 | 1.549 | 2.75 |
-| allowlist+exfil_filter+secondary_check | 62.6 | 0.0 | 1.0 | 8.04 |
-| spotlighting+allowlist+secondary_check | 97.0 | 34.4 | 1.549 | 6.80 |
-| allowlist+approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 8.34 |
-| spotlighting+exfil_filter+approval_gate | 97.0 | 34.4 | 1.549 | 3.14 |
-| spotlighting+exfil_filter+secondary_check | 97.0 | 34.4 | 1.549 | 7.19 |
-| exfil_filter+approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 8.73 |
-| spotlighting+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 7.49 |
-| spotlighting+allowlist+exfil_filter+approval_gate | 97.0 | 34.4 | 1.549 | 4.11 |
-| spotlighting+allowlist+exfil_filter+secondary_check | 97.0 | 34.4 | 1.549 | 8.16 |
-| allowlist+exfil_filter+approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 9.70 |
-| spotlighting+allowlist+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 8.46 |
-| spotlighting+exfil_filter+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 8.85 |
-| spotlighting+allowlist+exfil_filter+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 9.82 |
+| approval_gate | 62.6 | 0.0 | 1.0 | 1.36 |
+| secondary_check | 62.6 | 0.0 | 1.0 | 5.14 |
+| allowlist+exfil_filter | 62.6 | 0.0 | 1.0 | 2.07 |
+| spotlighting+allowlist | 97.0 | 34.4 | 1.549 | 1.00 |
+| allowlist+approval_gate | 62.6 | 0.0 | 1.0 | 2.24 |
+| allowlist+secondary_check | 62.6 | 0.0 | 1.0 | 6.02 |
+| spotlighting+exfil_filter | 97.0 | 34.4 | 1.549 | 1.31 |
+| exfil_filter+approval_gate | 62.6 | 0.0 | 1.0 | 2.55 |
+| spotlighting+approval_gate | 97.0 | 34.4 | 1.549 | 1.48 |
+| exfil_filter+secondary_check | 62.6 | 0.0 | 1.0 | 6.33 |
+| spotlighting+secondary_check | 97.0 | 34.4 | 1.549 | 5.26 |
+| approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 6.50 |
+| spotlighting+allowlist+exfil_filter | 97.0 | 34.4 | 1.549 | 2.19 |
+| allowlist+exfil_filter+approval_gate | 62.6 | 0.0 | 1.0 | 3.43 |
+| spotlighting+allowlist+approval_gate | 97.0 | 34.4 | 1.549 | 2.36 |
+| allowlist+exfil_filter+secondary_check | 62.6 | 0.0 | 1.0 | 7.21 |
+| spotlighting+allowlist+secondary_check | 97.0 | 34.4 | 1.549 | 6.14 |
+| allowlist+approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 7.38 |
+| spotlighting+exfil_filter+approval_gate | 97.0 | 34.4 | 1.549 | 2.67 |
+| spotlighting+exfil_filter+secondary_check | 97.0 | 34.4 | 1.549 | 6.45 |
+| exfil_filter+approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 7.69 |
+| spotlighting+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 6.62 |
+| spotlighting+allowlist+exfil_filter+approval_gate | 97.0 | 34.4 | 1.549 | 3.55 |
+| spotlighting+allowlist+exfil_filter+secondary_check | 97.0 | 34.4 | 1.549 | 7.33 |
+| allowlist+exfil_filter+approval_gate+secondary_check | 62.6 | 0.0 | 1.0 | 8.57 |
+| spotlighting+allowlist+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 7.50 |
+| spotlighting+exfil_filter+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 7.81 |
+| spotlighting+allowlist+exfil_filter+approval_gate+secondary_check | 97.0 | 34.4 | 1.549 | 8.69 |
 
 ### Adaptive attacks against known defenses
 
